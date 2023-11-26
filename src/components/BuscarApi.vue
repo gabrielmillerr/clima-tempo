@@ -1,26 +1,29 @@
 <script>
-  export default {
-    name: "buscarApi",
-    data() {
-      return {
-        cidade: "",
-      }
-    },
-    methods: {
-      async buscarApi() {
-        try {
+export default {
+  name: "buscarApi",
+  data() {
+    return {
+      cidade: "",
+    };
+  },
+  methods: {
+    async buscarApi() {
+      try {
+        if (!this.cidade) {
+          throw new Error("Digite alguma cidade");
+        }
         const keyAPI = "94a2eb4f9654911c1d5bd7215eef2a24";
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.cidade}&appid=${keyAPI}`
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.cidade}&appid=${keyAPI}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
-        
-        this.$emit('resultadoBusca', data)
+
+        this.$emit("resultadoBusca", data);
       } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
       }
-    }
-    }
-  }
+    },
+  },
+};
 </script>
 
 <template>
@@ -43,7 +46,7 @@
   background: var(--gray-light);
   color: var(--color-input);
   padding: 10px 25px;
-  height: 60px;
+  height: 55px;
   border-radius: 30px;
   flex: 1;
   margin-right: 16px;

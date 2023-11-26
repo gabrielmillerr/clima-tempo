@@ -32,8 +32,13 @@ export default {
 </script>
 
 <template>
-  <img :src="imagemClima" alt="Condição climática">
+  <img class="imagem" :src="imagemClima" alt="Condição climática">
 </template>
 
 <style scoped>
+  .imagem {
+    margin: 15px 0 15px 0;
+    width: 150px;
+    height: 150px;
+  }
 </style>
